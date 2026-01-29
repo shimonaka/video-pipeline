@@ -1,0 +1,44 @@
+{
+  "title": "業務効率化の紹介",
+  "version": "1.0",
+  "description": "AIで作る業務動画のデモ用サンプル台本",
+  "speakers": {
+    "narrator": {
+      "name": "ナレーター",
+      "voice": "Kore"
+    }
+  },
+  "scenes": [
+    {
+      "id": "scene_001",
+      "speaker": "narrator",
+      "text": "今日は、AIを使った業務動画の作り方を紹介します。"
+    },
+    {
+      "id": "scene_002",
+      "speaker": "narrator",
+      "text": "必要なツールは3つだけ。音声合成、リップシンク、そして動画生成ツールです。"
+    },
+    {
+      "id": "scene_003",
+      "speaker": "narrator",
+      "text": "台本を書くだけで、キャラクターが話す動画が完成します。"
+    },
+    {
+      "id": "scene_004",
+      "speaker": "narrator",
+      "text": "引き継ぎ動画や研修資料も、手軽に作れるようになります。"
+    },
+    {
+      "id": "scene_005",
+      "speaker": "narrator",
+      "text": "次回は、具体的なツールの使い方を見ていきましょう。"
+    }
+  ],
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "background": "lightBlue"
+  }
+}

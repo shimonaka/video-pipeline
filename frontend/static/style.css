@@ -1,0 +1,295 @@
+/* ビデオパイプライン スタイル */
+
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-light: #334155;
+  --text: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border: #475569;
+  --success: #22c55e;
+  --error: #ef4444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  margin-top: 0.5rem;
+}
+
+.panel-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.panel {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.panel h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.hint code {
+  background: var(--surface-light);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 1rem;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: inherit;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.engine-settings {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.setting-row label {
+  color: var(--text-muted);
+  min-width: 100px;
+}
+
+select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+
+/* ドロップゾーン */
+.dropzone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: var(--text-muted);
+}
+
+.dropzone:hover,
+.dropzone.dragover {
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+/* スライドリスト */
+.slide-list {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.slide-item {
+  position: relative;
+  width: 100px;
+  height: 75px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: grab;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.slide-item:hover {
+  border-color: var(--primary);
+}
+
+.slide-item.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.slide-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-item .slide-number {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: var(--primary);
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.slide-item .remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background: var(--error);
+  color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.slide-item:hover .remove-btn {
+  opacity: 1;
+}
+
+/* アクションバー */
+.action-bar {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  color: white;
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.25rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.status {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  min-height: 1.5rem;
+}
+
+.status.error {
+  color: var(--error);
+}
+
+/* 結果表示 */
+.result {
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 1px solid var(--success);
+}
+
+.result.hidden {
+  display: none;
+}
+
+.result h2 {
+  color: var(--success);
+  margin-bottom: 1rem;
+}
+
+.result video {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.btn-download {
+  display: inline-block;
+  background: var(--success);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.btn-download:hover {
+  background: #16a34a;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .panel-container {
+    grid-template-columns: 1fr;
+  }
+}

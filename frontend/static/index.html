@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビデオパイプライン</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>🎬 ビデオパイプライン</h1>
+      <p class="subtitle">台本とスライドから動画を自動生成</p>
+    </header>
+
+    <main>
+      <div class="panel-container">
+        <!-- 左パネル: 台本入力 -->
+        <div class="panel">
+          <h2>📝 台本</h2>
+          <p class="hint">空行でシーン区切り、<code>---</code>でスライド切り替え<br><code>*強調したい文字*</code>で囲むと黄色になります</p>
+          <textarea id="script" placeholder="今日はAIについて説明します。
+
+必要なツールは3つあります。
+
+---
+
+ここからは実際のデモをご覧ください。
+
+台本を書くだけで動画ができあがります。"></textarea>
+
+          <div class="engine-settings">
+            <div class="setting-row">
+              <label for="engine">🔊 エンジン:</label>
+              <select id="engine">
+                <option value="voicevox">VOICEVOX（無料・ローカル）</option>
+                <option value="gemini">Gemini（API必要）</option>
+              </select>
+            </div>
+
+            <div class="setting-row" id="voicevoxSettings">
+              <label for="speaker">🎭 キャラクター:</label>
+              <select id="speaker">
+                <option value="none">なし（非表示）</option>
+                <option value="3">ずんだもん</option>
+                <option value="2">四国めたん</option>
+                <option value="8">春日部つむぎ</option>
+              </select>
+            </div>
+
+            <div class="setting-row hidden" id="geminiSettings">
+              <label for="voice">🎤 ボイス:</label>
+              <select id="voice">
+                <option value="Kore">Kore（日本語推奨）</option>
+                <option value="Aoede">Aoede</option>
+                <option value="Charon">Charon</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右パネル: スライドアップロード -->
+        <div class="panel">
+          <h2>🖼️ スライド画像</h2>
+          <p class="hint">ドラッグ&ドロップで順番変更可能</p>
+
+          <div id="dropzone" class="dropzone">
+            <p>📁 画像をドロップ<br>または<br>クリックして選択</p>
+            <input type="file" id="fileInput" multiple accept="image/*" hidden>
+          </div>
+
+          <div id="slideList" class="slide-list"></div>
+        </div>
+      </div>
+
+      <!-- 生成ボタン -->
+      <div class="action-bar">
+        <button id="generateBtn" class="btn-primary">
+          🎬 動画を生成
+        </button>
+        <div id="status" class="status"></div>
+      </div>
+
+      <!-- 結果表示 -->
+      <div id="result" class="result hidden">
+        <h2>✅ 生成完了</h2>
+        <video id="videoPlayer" controls></video>
+        <a id="downloadLink" class="btn-download" download>📥 ダウンロード</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+
+</html>
