@@ -28,6 +28,8 @@ export interface VideoConfig {
     fps: number;
     background: string;
     characterVisible?: boolean;
+    characterBase?: string;
+    characterMouthDir?: string;
 }
 
 // パイプラインデータ（pipeline-data.json）

@@ -149,11 +149,13 @@ export const MultiSceneVideo: React.FC<MultiSceneVideoProps> = ({
                         {(videoConfig.characterVisible !== false) && (
                             <Character
                                 mouthCues={scene.lipsyncData.mouthCues}
-                                x={200}
-                                y={100}
-                                width={400}
-                                height={500}
+                                x={1350}
+                                y={80}
+                                width={550}
+                                height={1000}
                                 frameOffset={0}
+                                basePath={videoConfig.characterBase}
+                                mouthDir={videoConfig.characterMouthDir}
                             />
                         )}
 

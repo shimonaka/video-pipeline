@@ -74,7 +74,9 @@ def integrate_pipeline_data(
             "height": height,
             "fps": fps,
             "background": video_config.get("background", "lightBlue"),
-            "characterVisible": video_config.get("characterVisible", True)
+            "characterVisible": video_config.get("characterVisible", True),
+            "characterBase": video_config.get("characterBase"),
+            "characterMouthDir": video_config.get("characterMouthDir")
         },
         "scenes": []
     }

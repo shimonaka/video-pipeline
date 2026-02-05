@@ -1,0 +1,30 @@
+{
+  "title": "Test Rin Integration",
+  "version": "1.0",
+  "videoConfig": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "background": "lightBlue",
+    "characterVisible": true,
+    "characterBase": "character/rin.png",
+    "characterMouthDir": "character"
+  },
+  "scenes": [
+    {
+      "sceneId": "scene_001",
+      "speaker": "narrator",
+      "text": "これはテストです。",
+      "audio": {
+        "file": "audio/01_narrator.wav",
+        "duration": 4.370958333333333,
+        "startFrame": 0,
+        "endFrame": 131
+      },
+      "lipsync": {
+        "file": "lipsync/01_narrator.json"
+      }
+    }
+  ],
+  "totalFrames": 131
+}

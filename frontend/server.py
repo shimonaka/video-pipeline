@@ -239,6 +239,40 @@ async def generate_video(
             script_json["video"]["characterVisible"] = False
             # 音声生成のためにデフォルトIDを使用（ずんだもん=3）
             script_json["speakers"]["narrator"]["voicevox_id"] = 3
+        elif speaker == "custom-rin":
+            if "video" not in script_json:
+                script_json["video"] = {}
+            script_json["video"]["characterVisible"] = True
+            
+            # カスタムキャラクター設定
+            # Remotion側でのパス（publicからの相対パス）
+            # script_json["video"]["characterBase"] = "character/rin.png" # ベース画像を指定すると口パク画像と重なってスタンド化するため無効化
+            script_json["video"]["characterMouthDir"] = "character"
+            
+            # デフォルト音声（女性音声）
+            script_json["speakers"]["narrator"]["voicevox_id"] = 8  # 春日部つむぎ
+            
+            # アセットのコピー（video-pipeline/character -> remotion-project/public/character）
+            # キャラクター定義ディレクトリ
+            char_src_dir = Path(__file__).parent.parent / "character"
+            remotion_char_dir = SCRIPT_DIR.parent / "remotion-project" / "public" / "character"
+            
+            # ディレクトリ作成
+            remotion_char_dir.mkdir(parents=True, exist_ok=True)
+            
+            # rin.pngをコピー
+            rin_src = char_src_dir / "rin.png"
+            if rin_src.exists():
+                shutil.copy(rin_src, remotion_char_dir / "rin.png")
+            else:
+                print(f"Warning: {rin_src} not found")
+                
+            # 口の画像をコピー (A-F)
+            for mouth in ["A", "B", "C", "D", "E", "F"]:
+                mouth_file = f"mouth-{mouth}.png"
+                mouth_src = char_src_dir / mouth_file
+                if mouth_src.exists():
+                    shutil.copy(mouth_src, remotion_char_dir / mouth_file)
         else:
             if "video" not in script_json:
                 script_json["video"] = {}

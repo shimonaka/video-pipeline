@@ -1,0 +1,28 @@
+{
+    "title": "Test Rin Integration",
+    "version": "1.0",
+    "video": {
+        "width": 1920,
+        "height": 1080,
+        "fps": 30,
+        "background": "lightBlue",
+        "characterVisible": true,
+        "characterBase": "character/rin.png",
+        "characterMouthDir": "character"
+    },
+    "speakers": {
+        "narrator": {
+            "name": "ナレーター",
+            "voice": "Kore",
+            "voicevox_id": 8
+        }
+    },
+    "scenes": [
+        {
+            "id": "scene_001",
+            "speaker": "narrator",
+            "text": "これはテストです。",
+            "slideIndex": 0
+        }
+    ]
+}
